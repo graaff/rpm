@@ -232,8 +232,8 @@ module NewRelic
           end
         end
       end
-      control.log! "New Relic RPM Agent #{NewRelic::VERSION::STRING} Initialized: pid = #$$"
-      control.log! "Agent Log found in #{NewRelic::Control.instance.log_file}" if NewRelic::Control.instance.log_file
+      control.log "New Relic RPM Agent #{NewRelic::VERSION::STRING} Initialized: pid = #$$"
+      control.log "Agent Log found in #{NewRelic::Control.instance.log_file}" if NewRelic::Control.instance.log_file
     end
     
     # Clear out the metric data, errors, and transaction traces.  Reset the histogram data.
@@ -389,7 +389,7 @@ module NewRelic
             
         @report_period = invoke_remote :get_data_report_period, @agent_id
  
-        control.log! "Connected to NewRelic Service at #{@collector}"
+        control.log "Connected to NewRelic Service at #{@collector}"
         log.debug "Agent ID = #{@agent_id}."
         
         # Ask the server for permission to send transaction samples.
